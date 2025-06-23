@@ -1,13 +1,20 @@
 
-function search() {
-  const input = document.getElementById("input").value.trim();
-  const output = document.getElementById("output");
+function showTab(tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(".tabs li").forEach(el => el.classList.remove("active"));
+  document.getElementById(tabId).classList.add("active");
+  document.querySelector(`.tabs li[onclick="showTab('${tabId}')"]`).classList.add("active");
+}
 
-  if (!input) {
-    output.innerHTML = "<p style='color:red;'>Введите код МКБ</p>";
+function startCheck() {
+  const fileInput = document.getElementById("fileInput");
+  if (!fileInput.files.length) {
+    alert("Выберите файл для проверки!");
     return;
   }
-
-  // Заглушка. Здесь можно встроить подсказку с бекенда или из JSON
-  output.innerHTML = `<div class="result">🔎 Результаты по: <strong>${input}</strong><br>— (пример) Острое заболевание — ГОБМП</div>`;
+  document.getElementById("status").textContent = "🔄 Обработка...";
+  setTimeout(() => {
+    document.getElementById("status").textContent = "";
+    document.querySelector(".download").classList.remove("hidden");
+  }, 2000); // Имитация обработки
 }

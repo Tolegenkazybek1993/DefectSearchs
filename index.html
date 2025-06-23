@@ -3,17 +3,36 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Подсказка по МКБ-10</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Центр Медицинской Аналитики</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h2>🔍 Подсказка по МКБ-10</h2>
-    <input type="text" id="input" placeholder="Введите диагноз или код МКБ-10" />
-    <button onclick="search()">Показать подсказку</button>
-    <div id="output"></div>
+    <h1>Центр Медицинской Аналитики</h1>
+    <ul class="tabs">
+      <li class="active" onclick="showTab('excel')">🧪 Проверка Excel</li>
+      <li onclick="showTab('mkb')">📘 Подсказка МКБ-10</li>
+    </ul>
+    <div id="excel" class="tab-content active">
+      <h2>📤 Загрузка файла</h2>
+      <input type="file" id="fileInput"><br><br>
+      <select id="reportType">
+        <option>Отчет B — Внешние направления</option>
+      </select><br><br>
+      <button onclick="startCheck()">🚀 Начать проверку</button>
+      <div id="status" class="status"></div>
+      <div id="download" class="download hidden">
+        <p>✅ Готово.</p>
+        <a href="#" download>📥 Скачать</a>
+      </div>
+    </div>
+    <div id="mkb" class="tab-content">
+      <h2>📘 Подсказка МКБ-10</h2>
+      <p>Здесь будет информация по кодам МКБ-10...</p>
+    </div>
   </div>
-
+  <footer>© 2025 Центр Медицинской Аналитики</footer>
   <script src="script.js"></script>
 </body>
 </html>
